@@ -140,6 +140,10 @@ INSERT INTO public.users VALUES (1, 'user_1722504114316');
 INSERT INTO public.users VALUES (2, 'user_1722504114315');
 INSERT INTO public.users VALUES (3, 'user_1722507407389');
 INSERT INTO public.users VALUES (4, 'user_1722507407388');
+INSERT INTO public.users VALUES (5, 'user_1722517965271');
+INSERT INTO public.users VALUES (6, 'user_1722517965270');
+INSERT INTO public.users VALUES (7, 'user_1722518040233');
+INSERT INTO public.users VALUES (8, 'user_1722518040232');
 
 
 --
@@ -153,7 +157,7 @@ SELECT pg_catalog.setval('public.games_game_id_seq', 1, false);
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 4, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 8, true);
 
 
 --
