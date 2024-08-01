@@ -21,6 +21,7 @@ MAIN() {
     fi
 
     USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
+    echo "Welcome, $USERNAME! It looks like this is your first time here."
   fi
 }
 
