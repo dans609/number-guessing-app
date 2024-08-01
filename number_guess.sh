@@ -13,7 +13,7 @@ MAIN() {
   if [[ -z $USER_ID ]]; then
     INSERT_USER=$($PSQL "INSERT INTO users(username) VALUES('$USERNAME')" 2>/dev/null)
     if [[ ! $INSERT_USER = "INSERT 0 1" ]]; then
-      echo -e "\nusername is too long, maximum characters is (22)"    
+      MAIN "username is too long, maximum characters is (22)"    
     fi
   fi
 }
