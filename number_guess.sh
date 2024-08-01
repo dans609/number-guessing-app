@@ -19,6 +19,8 @@ MAIN() {
     if [[ ! $INSERT_USER = "INSERT 0 1" ]]; then
       MAIN "username is too long, maximum characters is (22)"    
     fi
+
+    USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
   fi
 }
 
