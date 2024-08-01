@@ -3,6 +3,10 @@
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 
 MAIN() {
+  if [[ -n $1 ]]; then
+    echo -e "\n$1"
+  fi
+
   echo "Enter your username:"
   read USERNAME
 
