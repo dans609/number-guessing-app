@@ -48,7 +48,7 @@ GAME() {
 
     TRY=$(( TRY + 1 ))
 
-    while [[ $NUMBER_GUESS -ne $EXPECTED_NUMBER ]]; do
+    while [[ $NUMBER_GUESS -ne $EXPECTED_NUMBER ]] 2>/dev/null; do
       if [[ ! $NUMBER_GUESS =~ ^[0-9]+$ ]]; then
         echo "That is not an integer, guess again:"
       elif [[ $NUMBER_GUESS -lt $EXPECTED_NUMBER ]]; then
@@ -62,8 +62,12 @@ GAME() {
       read NUMBER_GUESS
     done
 
-    echo "You guessed it in $TRY tries. The secret number was $EXPECTED_NUMBER. Nice job!"
-    INSERT_GAME=$($PSQL "INSERT INTO games(user_id, number_of_guess) VALUES($ID, $TRY)")
+    if [[ $NUMBER_GUESS -eq $EXPECTED_NUMBER ]]; then
+      echo "You guessed it in $TRY tries. The secret number was $EXPECTED_NUMBER. Nice job!"
+      INSERT_GAME=$($PSQL "INSERT INTO games(user_id, number_of_guess) VALUES($ID, $TRY)")
+    else
+      echo "An error occur unexpectedly"
+    fi
   fi
 }
 
