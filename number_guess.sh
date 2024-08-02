@@ -36,6 +36,7 @@ GAME() {
     echo "Missing user id parameter"
   else
     TRY=0
+    EXPECTED_NUMBER=$(( RANDOM % 1000 + 1 ))
     echo "Guess the secret number between 1 and 1000:"
     read NUMBER_GUESS
 
@@ -43,6 +44,11 @@ GAME() {
       echo "That is not an integer, guess again:"
       read NUMBER_GUESS
     done
+
+    if [[ $NUMBER_GUESS -eq $EXPECTED_NUMBER ]]; then
+      TRY=$(( TRY + 1 ))
+      echo "You guessed it in $TRY tries. The secret number was $EXPECTED_NUMBER. Nice job!"
+    fi
   fi
 }
 
