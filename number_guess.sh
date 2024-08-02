@@ -48,6 +48,16 @@ GAME() {
     TRY=$(( TRY + 1 ))
 
     while [[ $NUMBER_GUESS -ne $EXPECTED_NUMBER ]]; do
+      if [[ ! $NUMBER_GUESS =~ ^[0-9]+$ ]]; then
+        echo "That is not an integer, guess again:"
+      elif [[ $NUMBER_GUESS -lt $EXPECTED_NUMBER ]]; then
+        echo "It's higher than that, guess again:"
+        TRY=$(( TRY + 1 ))
+      else
+        echo "It's lower than that, guess again:"
+        TRY=$(( TRY + 1 ))
+      fi
+
       read NUMBER_GUESS
     done
 
