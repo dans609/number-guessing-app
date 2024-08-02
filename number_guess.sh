@@ -25,6 +25,9 @@ MAIN() {
   else
     TOTAL_GAMES=$($PSQL "SELECT COUNT(game_id) FROM games WHERE user_id=$USER_ID")
     BEST_GAME=$($PSQL "SELECT MIN(number_of_guess) FROM games WHERE user_id=$USER_ID")
+    if [[ -z $BEST_GAME ]]; then
+      BEST_GAME=0
+    fi
     echo "Welcome back, $USERNAME! You have played $TOTAL_GAMES games, and your best game took $BEST_GAME guesses."
   fi
 
