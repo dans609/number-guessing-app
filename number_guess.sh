@@ -45,10 +45,13 @@ GAME() {
       read NUMBER_GUESS
     done
 
-    if [[ $NUMBER_GUESS -eq $EXPECTED_NUMBER ]]; then
-      TRY=$(( TRY + 1 ))
-      echo "You guessed it in $TRY tries. The secret number was $EXPECTED_NUMBER. Nice job!"
-    fi
+    TRY=$(( TRY + 1 ))
+
+    while [[ $NUMBER_GUESS -ne $EXPECTED_NUMBER ]]; do
+      read NUMBER_GUESS
+    done
+
+    echo "You guessed it in $TRY tries. The secret number was $EXPECTED_NUMBER. Nice job!"
   fi
 }
 
