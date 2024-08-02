@@ -27,6 +27,17 @@ MAIN() {
     BEST_GAME=$($PSQL "SELECT MIN(number_of_guess) FROM games WHERE user_id=$USER_ID")
     echo "Welcome back, $USERNAME! You have played $TOTAL_GAMES games, and your best game took $BEST_GAME guesses."
   fi
+
+  GAME $USER_ID
+}
+
+GAME() {
+  if [[ -z $1 ]]; then
+    echo "Missing user id parameter"
+  else
+    echo "Guess the secret number between 1 and 1000:"
+    read NUMBER_GUESS
+  fi
 }
 
 MAIN
