@@ -36,6 +36,7 @@ GAME() {
     echo "Missing user id parameter"
   else
     TRY=0
+    ID=$1
     EXPECTED_NUMBER=$(( RANDOM % 1000 + 1 ))
     echo "Guess the secret number between 1 and 1000:"
     read NUMBER_GUESS
@@ -62,6 +63,7 @@ GAME() {
     done
 
     echo "You guessed it in $TRY tries. The secret number was $EXPECTED_NUMBER. Nice job!"
+    INSERT_GAME=$($PSQL "INSERT INTO games(user_id, number_of_guess) VALUES($ID, $TRY)")
   fi
 }
 
