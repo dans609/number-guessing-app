@@ -38,6 +38,11 @@ GAME() {
     TRY=0
     echo "Guess the secret number between 1 and 1000:"
     read NUMBER_GUESS
+
+    while [[ ! $NUMBER_GUESS =~ ^[0-9]+$ ]]; do
+      echo "That is not an integer, guess again:"
+      read NUMBER_GUESS
+    done
   fi
 }
 
