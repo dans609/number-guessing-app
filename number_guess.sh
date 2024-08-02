@@ -22,6 +22,10 @@ MAIN() {
 
     USER_ID=$($PSQL "SELECT user_id FROM users WHERE username='$USERNAME'")
     echo "Welcome, $USERNAME! It looks like this is your first time here."
+  else
+    TOTAL_GAMES=$($PSQL "SELECT COUNT(game_id) FROM games WHERE user_id=$USER_ID")
+    BEST_GAME=$($PSQL "SELECT MIN(number_of_guess) FROM games WHERE user_id=$USER_ID")
+    echo "Welcome back, $USERNAME! You have played $TOTAL_GAMES games, and your best game took $BEST_GAME guesses."
   fi
 }
 
