@@ -35,6 +35,7 @@ GAME() {
   if [[ -z $1 ]]; then
     echo "Missing user id parameter"
   else
+    TRY=0
     echo "Guess the secret number between 1 and 1000:"
     read NUMBER_GUESS
   fi
